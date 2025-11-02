@@ -1,0 +1,23 @@
+{
+  "subject": "web",
+  "difficulty": "advanced",
+  "version": 1,
+  "questions": [
+    {
+      "id": "web-a-1",
+      "type": "mcq",
+      "question": "GraphQL에서 N+1 문제를 완화하기 위한 일반적 전략은?",
+      "choices": ["더 많은 리졸버 추가", "DataLoader 같은 배칭/캐싱", "모든 요청을 직렬화", "스키마를 제거"],
+      "answerIndex": 1,
+      "explanation": "배칭/캐싱을 통해 동일 데이터 소스에 대한 반복 접근을 줄인다."
+    },
+    {
+      "id": "web-a-2",
+      "type": "mcq",
+      "question": "HTTP/3(QUIC)의 장점으로 옳은 것은?",
+      "choices": ["헤드 오브 라인 블로킹 증가", "TLS 종단 필요 없음", "연결 재사용 및 0-RTT로 지연 감소", "TCP 기반이라 네트워크 호환성 증가"],
+      "answerIndex": 2,
+      "explanation": "QUIC은 UDP 기반으로 멀티플렉싱, 0-RTT 등을 통해 지연을 줄인다."
+    }
+  ]
+}

@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+// 홈 대시보드 컴포넌트
+// - 책임: 인사말, 간단 통계, 주요 액션 카드(빠른 시작/추천/이어서 학습), 최근 활동
+// - 인증: /api/auth/me 로 사용자 이름을 조회하여 인사말에 표시
+// - 추후 연동: 통계/최근활동은 백엔드 API 연동 예정
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/home.css';
 
@@ -8,11 +12,38 @@ export default function Home() {
   // ============================================
   // 사용자 로그인 상태 관리
   // ============================================
-  // TODO: 실제로는 Context API나 Redux 등 전역 상태관리로 관리해야 함
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // 임시로 로그인 상태로 설정
-  
-  // TODO: 사용자 정보는 API에서 가져와야 함 (예: /api/user/profile)
-  const userName = "홍길동"; // 임시 사용자 이름
+  // 로그인 토글(데모용). 실제 앱에서는 전역 상태/세션 검사로 관리 권장
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  // 인사말 표시용 사용자 이름. 기본값은 "사용자"
+  const [userName, setUserName] = useState('사용자');
+
+  useEffect(() => {
+    // (인증) 로그인한 사용자 정보 가져오기
+    // 계약: GET /api/auth/me → { id, email, name }
+    // 쿠키 기반 인증이라 credentials: 'include' 필수
+    const fetchUser = async () => {
+      try {
+        const res = await fetch('/api/auth/me', { credentials: 'include' })
+        if (res.ok) {
+          const data = await res.json()
+          console.log('User data from /api/auth/me:', data)
+          console.log('Name field:', data.name)
+          console.log('Type of name:', typeof data.name)
+          if (data.name) {
+            setUserName(data.name)
+          } else {
+            console.warn('Name is missing or falsy:', data.name)
+          }
+        } else {
+          console.log('Failed to fetch user:', res.status)
+        }
+      } catch (e) {
+        console.error('Error fetching user:', e)
+        // 에러 시 기본값 유지
+      }
+    }
+    fetchUser()
+  }, [])
 
   // ============================================
   // 통계 데이터 (API 연동 필요)
@@ -39,7 +70,7 @@ export default function Home() {
       subject: "운영체제",
       difficulty: "중급",
       problemCount: 6,
-      timestamp: "2시간 전",
+      timestamp: "그냥 예시",
       color: "green",
       // TODO: 클릭 시 해당 학습 상세 페이지로 이동
       // navigate(`/study/result/${id}`) 형태로 구현
@@ -49,7 +80,7 @@ export default function Home() {
       subject: "자료구조",
       difficulty: "초급",
       problemCount: 8,
-      timestamp: "어제",
+      timestamp: "예시에용",
       color: "blue",
     },
     {
@@ -57,7 +88,7 @@ export default function Home() {
       subject: "웹프레임워크",
       difficulty: "중급",
       problemCount: 3,
-      timestamp: "2일 전",
+      timestamp: "데모로 넣어둠",
       color: "purple",
     }
   ];
@@ -198,7 +229,7 @@ export default function Home() {
           <div className="action-card green" onClick={handleQuickStart}>
             <div className="action-icon-box green">⏱️</div>
             <h3 className="action-title">빠른 시작</h3>
-            <p className="action-desc">최근 학습 편터 이어하기</p>
+            <p className="action-desc">최근 학습 챕터 이어하기</p>
             <button className="action-btn">시작하기 →</button>
           </div>
           

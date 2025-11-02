@@ -1,0 +1,23 @@
+{
+  "subject": "ds",
+  "difficulty": "intermediate",
+  "version": 1,
+  "questions": [
+    {
+      "id": "ds-i-1",
+      "type": "mcq",
+      "question": "이진 탐색 트리(BST)에서 평균 탐색 시간 복잡도는?",
+      "choices": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+      "answerIndex": 1,
+      "explanation": "균형이 잘 맞는 경우 평균 탐색은 O(log n). 최악의 경우는 O(n)."
+    },
+    {
+      "id": "ds-i-2",
+      "type": "mcq",
+      "question": "해시 테이블에서 충돌을 해결하는 방법이 아닌 것은?",
+      "choices": ["체이닝", "오픈 어드레싱", "더블 해싱", "머지 소트"],
+      "answerIndex": 3,
+      "explanation": "머지 소트는 정렬 알고리즘으로 충돌 해결 기법이 아니다."
+    }
+  ]
+}

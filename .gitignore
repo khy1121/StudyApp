@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# App data (exclude problem sets or large datasets)
+public/data/
+
+# Server secrets and local DB (safety net; also covered by server/.gitignore)
+server/.env
+server/prisma/*.db
+server/prisma/*.db-journal
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,0 +1,23 @@
+{
+  "subject": "web",
+  "difficulty": "beginner",
+  "version": 1,
+  "questions": [
+    {
+      "id": "web-b-1",
+      "type": "mcq",
+      "question": "REST API의 기본 원칙이 아닌 것은?",
+      "choices": ["무상태성", "일관된 리소스 식별자(URI)", "서버-클라이언트 분리", "항상 SOAP 사용"],
+      "answerIndex": 3,
+      "explanation": "REST는 SOAP를 요구하지 않는다."
+    },
+    {
+      "id": "web-b-2",
+      "type": "mcq",
+      "question": "HTTP 상태 코드 201은 무엇을 의미하나요?",
+      "choices": ["성공", "생성됨", "인증 필요", "금지됨"],
+      "answerIndex": 1,
+      "explanation": "201 Created는 새 리소스가 성공적으로 생성되었음을 의미한다."
+    }
+  ]
+}

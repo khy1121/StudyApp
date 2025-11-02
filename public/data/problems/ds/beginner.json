@@ -1,0 +1,33 @@
+{
+  "subject": "ds",
+  "difficulty": "beginner",
+  "version": 1,
+  "questions": [
+    {
+      "id": "ds-b-1",
+      "type": "mcq",
+      "question": "배열(Array)과 연결 리스트(Linked List)의 차이로 옳은 것은?",
+      "choices": [
+        "배열은 삽입/삭제가 빠르고, 연결 리스트는 느리다",
+        "배열은 연속된 메모리를 사용하고, 연결 리스트는 노드 포인터로 연결된다",
+        "연결 리스트는 인덱스 접근이 O(1)이다",
+        "둘 다 크기 변경이 항상 O(1)이다"
+      ],
+      "answerIndex": 1,
+      "explanation": "배열은 연속된 메모리, 연결 리스트는 포인터 연결 구조이다. 인덱스 접근은 배열이 O(1), 연결 리스트는 O(n)."
+    },
+    {
+      "id": "ds-b-2",
+      "type": "mcq",
+      "question": "스택(Stack)의 대표적 사용 사례는?",
+      "choices": [
+        "최단 경로 탐색",
+        "함수 호출 관리(호출 스택)",
+        "네트워크 패킷 큐잉",
+        "LRU 캐시"
+      ],
+      "answerIndex": 1,
+      "explanation": "호출 스택은 함수 호출/복귀를 LIFO 구조로 관리한다."
+    }
+  ]
+}

@@ -1,4 +1,14 @@
+// 과목/난이도/모드/시간을 선택하여 학습을 시작하는 화면
+// - 계약(입력/출력):
+//   입력 props: onStart?(payload)
+//   출력 payload: { subject('os'|'ds'|'web'), difficulty('초급'|'중급'|'고급'|null), mode('quiz'|'exam'|null), studyTimeMin(number|null) }
+// - 동작 개요:
+//   1) 과목/난이도/모드/시간을 선택(일부 섹션은 HIDE로 숨김 가능)
+//   2) [학습 시작] 클릭 시 payload 생성 → onStart 호출 또는 라우팅으로 전달
+//   3) 추후: subject/difficulty에 따른 문제 JSON/API 로딩, exam 모드의 타이머는 /exam 페이지에서 처리
+// - 접근성: 키보드 Enter로 시작, 버튼에 role/aria 명시 일부 적용
 import React, { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/select.css";
 
 /**
@@ -39,7 +49,11 @@ import "../../styles/select.css";
  *  payload = { subject, difficulty, mode, studyTimeMin }
  */
 export default function SelectPage({ onStart }) {
+  // 라우팅을 위한 navigate 훅
+  const navigate = useNavigate();
   // 섹션 표시 토글(HIDE ON/OFF)
+  // - true: 섹션 노출 및 값 필요(시작 조건에 반영)
+  // - false: 섹션 숨김 및 값 불필요(시작 조건에서 제외)
   const [showDifficulty, setShowDifficulty] = useState(true);
   const [showMode, setShowMode] = useState(true);
   const [showTime, setShowTime] = useState(true);
@@ -75,13 +89,12 @@ export default function SelectPage({ onStart }) {
   //     .catch(console.error);
   // }, [subject, difficulty]);
 
-  // 유효성
+  // 유효성 검사: 시작 버튼 활성화 조건
   const canStart = useMemo(() => {
-    // 시작 가능 조건
-    // - 과목은 항상 필수
-    // - 난이도 섹션이 표시 상태라면 난이도도 필수
-    // - 모드 섹션이 표시 상태라면 모드도 필수
-    // - 시간 섹션은 표시 여부와 무관하게 시작 가능(시험 모드일 때만 활용)
+    // - 과목(subject): 항상 필수
+    // - 난이도(difficulty): 섹션이 보일 때만 필수(showDifficulty)
+    // - 모드(mode): 섹션이 보일 때만 필수(showMode)
+    // - 시간(studyTime): 시작 여부와 무관하며 exam 모드일 때만 의미 있게 사용
     return !!subject && (!!difficulty || !showDifficulty) && (!!mode || !showMode);
   }, [subject, difficulty, mode, showDifficulty, showMode]);
 
@@ -112,6 +125,7 @@ export default function SelectPage({ onStart }) {
   *  타이머 시작 → 제출 시 일괄 채점 및 결과 페이지 이동)
      */
 
+    // 콜백 방식(onStart) 우선, 미제공 시 콘솔 출력(추후 navigate로 교체 권장)
     if (typeof onStart === "function") onStart(payload);
     else console.log("START:", payload);
   };
@@ -134,7 +148,8 @@ export default function SelectPage({ onStart }) {
       {/* HEADER */}
       <header className="select-header">
         <div className="header-inner">
-          <button className="icon-back" aria-label="뒤로가기" onClick={() => history.back()}>
+          {/* 뒤로가기: 브라우저 히스토리 대신 /home 으로 명시적 이동 */}
+          <button className="icon-back" aria-label="뒤로가기" onClick={() => navigate('/home')}>
             ←
           </button>
           <div className="brand">
@@ -160,7 +175,7 @@ export default function SelectPage({ onStart }) {
               <h3 className="block-title">과목 선택</h3>
             </div>
             <div className="card-grid">
-              {/* (과목 선택 처리) 여기에 추가 (구현방법 : 과목 카드 클릭 시 setSubject('os'|'ds'|'web');
+        {/* (과목 선택 처리) 여기에 추가 (구현방법 : 과목 카드 클릭 시 setSubject('os'|'ds'|'web');
                   이후 위 useEffect에서 해당 과목 JSON을 가져와 난이도 선택값이 있으면
                   json.difficulties[difficulty]로 필터링하여 setProblems(list) 실행) */}
               <SubjectCard
@@ -192,7 +207,7 @@ export default function SelectPage({ onStart }) {
             </div>
             {showDifficulty && (
               <div className="pill-grid">
-                {/* (난이도 선택 처리) 여기에 추가 (구현방법 : setDifficulty('초급'|'중급'|'고급') 호출 후
+        {/* (난이도 선택 처리) 여기에 추가 (구현방법 : setDifficulty('초급'|'중급'|'고급') 호출 후
                     메모된 과목 데이터 또는 fetch 결과에서 해당 난이도 배열만 골라 setProblems(list)) */}
                 <Pill
                   active={difficulty === "초급"}
@@ -224,7 +239,7 @@ export default function SelectPage({ onStart }) {
             </div>
             {showMode && (
               <div className="mode-grid">
-                {/* (모드 선택 처리) 여기에 추가 (구현방법 : setMode('quiz'|'exam') 선택값 저장 →
+        {/* (모드 선택 처리) 여기에 추가 (구현방법 : setMode('quiz'|'exam') 선택값 저장 →
                     handleStart에서 mode 값에 따라 navigate('/quiz'|'/exam', { state: payload })로 분기) */}
                 <ModeCard
                   active={mode === "quiz"}
@@ -255,7 +270,7 @@ export default function SelectPage({ onStart }) {
                   <span className="time-label">학습 시간</span>
                   <span className="time-value">{studyTime}분</span>
                 </div>
-                {/* (시험 시간 적용) 여기에 추가 (구현방법 : exam 모드에서만 의미 있게 사용.
+        {/* (시험 시간 적용) 여기에 추가 (구현방법 : exam 모드에서만 의미 있게 사용.
                     handleStart에서 payload.studyTimeMin으로 넘긴 뒤 /exam 페이지에서
                     useEffect+setInterval로 카운트다운을 구현하고 0이 되면 자동 제출) */}
                 <input

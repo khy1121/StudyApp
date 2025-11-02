@@ -1,0 +1,33 @@
+// Prisma 스키마 정의 파일
+// - generator: Prisma Client 코드를 생성하는 설정
+// - datasource: 사용할 DB와 연결 문자열(DATABASE_URL)
+// 개발 환경에서는 SQLite 파일을 사용합니다.
+generator client {
+  provider = "prisma-client-js"
+}
+
+// DB 연결 설정
+// provider: sqlite (파일 기반 DB)
+// url: .env 의 DATABASE_URL 값을 사용 (예: file:./prisma/dev.db)
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// 사용자 계정 테이블
+model User {
+  /// PK: 자동 증가 정수 ID
+  id           Int      @id @default(autoincrement())
+
+  /// 이메일(로그인용) — 전역 유니크 제약
+  email        String   @unique
+
+  /// 표시 이름 — 기본값 "사용자"
+  name         String   @default("사용자")
+
+  /// Argon2로 해시된 비밀번호
+  passwordHash String
+
+  /// 생성 시각 — 서버 시간 기준 now()
+  createdAt    DateTime @default(now())
+}
