@@ -1,0 +1,154 @@
+/* review_note_themed.css */
+
+.review-note-container {
+    padding: 10px;
+    background-color: var(--bg-primary); 
+    color: var(--text-secondary);
+}
+
+.note-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--header-border);
+    padding-bottom: 15px;
+}
+
+.note-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* 필터 탭 스타일 */
+.filter-tabs { display: flex; margin-top: 20px; gap: 15px; }
+
+.subject-tabs button {
+    padding: 8px 15px;
+    border: 1px solid var(--btn-border);
+    border-radius: 6px;
+    background: var(--btn-bg);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+}
+.subject-tabs button.active {
+    background: #4a74f5; 
+    color: #ffffff;
+    border-color: #4a74f5;
+}
+.subject-tabs button:hover {
+    background: var(--btn-hover-bg);
+}
+
+.difficulty-tabs {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.difficulty-tabs button {
+    padding: 6px 10px;
+    border: 1px solid var(--header-border);
+    border-radius: 4px;
+    background: var(--card-bg-from);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.difficulty-tabs button:hover {
+    border-color: var(--text-primary);
+}
+.difficulty-tabs button.active {
+    background: var(--bg-gradient-1); 
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* 오답 목록 스타일 */
+.wrong-list { margin-top: 30px; }
+
+.wrong-item {
+    background: var(--card-bg-from);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow-sm);
+}
+
+.question-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.question-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.choices-list { list-style: none; padding: 0; margin: 0 0 15px 0; }
+
+.choice-item {
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--card-border);
+    font-size: 15px;
+    transition: background 0.1s;
+}
+
+/* 정답/오답 표시 */
+.choice-item.correct {
+    background-color: rgba(16, 185, 129, 0.15); /* Green */
+    border-color: #10b981;
+    font-weight: 600;
+}
+.choice-item.wrong {
+    background-color: rgba(239, 68, 68, 0.15); /* Red */
+    border-color: #ef4444;
+}
+/* 해설 숨김 상태일 때, 사용자 선택 항목을 흐릿하게 표시 */
+.choice-item.user-selected {
+    border-left: 5px solid rgba(124, 58, 237, 0.3);
+    background-color: rgba(124, 58, 237, 0.05);
+}
+
+/* 해설 섹션 */
+.explanation-toggle {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.explanation-toggle:hover {
+    background: var(--btn-hover-bg);
+}
+
+.explanation-content {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid var(--text-muted);
+    border-radius: 8px;
+    background: var(--btn-hover-bg); 
+    white-space: pre-wrap;
+    font-size: 15px;
+    color: var(--text-primary);
+}
+
+.no-wrong-note {
+    text-align: center;
+    padding: 50px;
+    color: var(--text-muted);
+}

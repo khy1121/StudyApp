@@ -1,5 +1,5 @@
 import { useNavigate, Outlet } from 'react-router-dom'
-import '../../styles/home.css';
+//import '../../styles/home.css';
 import '../../styles/mypage.css';
 const MyPage = () => {
     const navigate = useNavigate()

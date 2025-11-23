@@ -1,10 +1,11 @@
 import SubjectProgressChart from "./SubjectProgressChart";
+import LearningTrendChart from "./LearningTrendChart";
 
-const StudyAnal = () =>{
-    return(
-        <div className="mypage-container">
-            <h2>학습 분석</h2>
-            <SubjectProgressChart/>
+const StudyAnal = () => {
+    return (
+        <div className="analysis-page">
+            <SubjectProgressChart />
+            <LearningTrendChart />
         </div>
     );
 }

@@ -10,7 +10,7 @@ import MyPage from './pages/MyPage/MyPage';
 import Achievment from "./components/MyPage/Achievement";
 import SummaryContent from "./components/MyPage/SummaryContent";
 import StudyAnal from "./components/MyPage/StudyAnal/StudyAnal";
-import ReviewNote from "./components/MyPage/ReviewNote";
+import ReviewNote from "./components/MyPage/ReviewNote/ReviewNote";
 import Settings from "./components/MyPage/Settings";
 
 function App() {
