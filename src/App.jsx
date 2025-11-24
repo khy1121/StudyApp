@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 import LandingPage from "./pages/SelectCourse/LandingPage";
+import RecommendSelectPage from './pages/SelectCourse/RecommendSelectPage';
 import ProblemPage from './pages/Problem/ProblemPage';
 import ResultsPage from './pages/Problem/ResultsPage';
+import ContinueStudyPage from './pages/ContinueStudy/ContinueStudyPage';
 import DashBoard from './components/layout/DashBoard/DashBoard';
 import LoginPage from './pages/Login/LoginPage';
 import SignInPage from './pages/SignIn/SignInPage';
@@ -22,6 +24,7 @@ function App() {
         <Route element={<DashBoard />}>
           <Route index element={<WelcomePage />} />
           <Route path="/select-course" element={<LandingPage />} />
+          <Route path="/select-recommend" element={<RecommendSelectPage />} />
           <Route path="auth">
             <Route path="login" element={<LoginPage />} />
             <Route path="signIn" element={<SignInPage />} />
@@ -29,6 +32,7 @@ function App() {
           <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
           <Route path="/problem" element={<ProtectedRoute><ProblemPage /></ProtectedRoute>} />
           <Route path="/results" element={<ProtectedRoute><ResultsPage /></ProtectedRoute>} />
+          <Route path="/continue-study" element={<ProtectedRoute><ContinueStudyPage /></ProtectedRoute>} />
           {/*마이페이지 중첩 라우팅 */}
           <Route path="/mypage" element={<MyPage/>}>
             <Route index element={<SummaryContent/>}/>
