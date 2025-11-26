@@ -67,8 +67,7 @@ const Settings = () =>{
                 setUser(updated)
                 try {
                     localStorage.setItem('currentUser', JSON.stringify(updated))
-                    localStorage.setItem('studyapp_current_user', JSON.stringify(updated));
-                    window.location.reload(); // 새로고침으로 Home의 이름 반영                    const users = safeParse('users', [])
+                    const users = safeParse('users', [])
                     const idx = users.findIndex(u => u.email === user.email)
                     if (idx >= 0) {
                         users[idx] = { ...users[idx], name: form.name, email: form.email }

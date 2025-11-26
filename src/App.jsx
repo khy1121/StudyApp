@@ -16,7 +16,7 @@ import SummaryContent from "./components/MyPage/SummaryContent";
 import StudyAnal from "./components/MyPage/StudyAnal/StudyAnal";
 import ReviewNote from "./components/MyPage/ReviewNote/ReviewNote";
 import Settings from "./components/MyPage/Settings";
-
+import JobRecommendation from "./components/MyPage/JobRecommendation/JobRecommendation";
 function App() {
   return (
     <BrowserRouter>
@@ -40,7 +40,7 @@ function App() {
             <Route path="wrong-note" element={<ReviewNote/>}/>
             <Route path="achievment" element={<Achievment/>}/>
             <Route path="settings" element={<Settings/>}/>
-
+            <Route path="job-recommendation" element={<JobRecommendation/>}/>
           </Route>
         </Route>
       </Routes>

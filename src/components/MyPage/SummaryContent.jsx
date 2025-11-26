@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as localAuth from '../../services/localAuth';
 
 const getRatingClass = (rating) => {
@@ -10,6 +11,7 @@ const getRatingClass = (rating) => {
 };
 
 const SummaryContent = () => {
+    const navigate = useNavigate();
     const [userName, setUserName] = useState('사용자');
     const [totalSolved, setTotalSolved] = useState(0);
     const [totalCorrect, setTotalCorrect] = useState(0);
@@ -125,7 +127,7 @@ const SummaryContent = () => {
                 <p>
                     학습 성과를 바탕으로 맞춤형 직무를 추천해드립니다!
                 </p>
-                <button>추천 직무 확인하기</button>
+                <button onClick={() => navigate('/mypage/job-recommendation')}>추천 직무 확인하기</button>
             </section>
             
             {/* 4. 최근 활동 목록 (recent-activity) - 이미지 하단 구현 */}

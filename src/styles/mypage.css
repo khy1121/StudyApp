@@ -439,6 +439,180 @@
     color: var(--text-secondary);
 }
 
+/* ================================================= */
+/* 직무 추천 탭 스타일 */
+/* ================================================= */
+
+.job-page-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+.page-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* 1. 직무 추천 개요 카드 (Overall Recommendation Card) */
+.match-card {
+    padding: 2rem;
+    border-radius: 0.75rem; /* 12px */
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    
+    /* 이미지 기반 그라데이션 */
+    background: linear-gradient(135deg, #a855f7, #6366f1); 
+    color: white;
+}
+.match-card-content p { margin: 0; opacity: 0.9; }
+.match-card-job {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+.match-ring {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+.match-card-match {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+}
+
+
+/* 2. 과목별 직무 분석 (Subject Analysis Card) */
+.subject-analysis-card {
+    background: var(--card-bg-from);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--card-border);
+    margin-bottom: 2rem;
+}
+.subject-analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.subject-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.subject-details h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+.subject-meta {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+.subject-meta .accent {
+    font-weight: 600;
+    color: #3b82f6; /* Blue accent */
+}
+.subject-style {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: var(--btn-hover-bg);
+    color: var(--text-primary);
+}
+
+/* 아이콘 컨테이너 (과목별 아이콘) */
+.subject-icon-box {
+    width: 3.5rem; /* 56px */
+    height: 3.5rem; /* 56px */
+    border-radius: 0.75rem; /* 12px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.75rem; /* 28px */
+    opacity: 0.9;
+}
+
+
+/* 분석 섹션 (추천 직무, 이유, 기술) */
+.analysis-sub-section {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--header-border);
+    margin-top: 1.5rem;
+}
+.analysis-sub-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.analysis-section-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #f472b6; /* Pink accent */
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.analysis-section-title .icon {
+    font-size: 1rem;
+    color: #10b981; /* Green icon for Reason */
+}
+.analysis-section-content {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    background: #ecfdf51a; /* Very light green background for reason box */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d1fae5;
+}
+.pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.pill-job {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background: var(--btn-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--btn-border);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+.pill-skill {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    background: var(--btn-bg);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    border: 1px solid var(--header-border);
+}
+
+
 /* Achievement styles */
 .achievement-root { padding: 28px; }
 .achievement-header { text-align: center; margin-bottom: 18px; }
