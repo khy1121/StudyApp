@@ -21,8 +21,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.MY_TOKEN }}
         with:
           source-directory: 'output'
-          destination-github-username: [https://github.com/Learning-support-service]
-          destination-repository-name: [https://github.com/Learning-support-service/common-directory]
+          destination-github-username: Learning-support-service
+          destination-repository-name: common-directory
           user-email: ${{ secrets.EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
