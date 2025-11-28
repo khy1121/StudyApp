@@ -27,6 +27,8 @@ export default function ProblemPage() {
     totalScore: 0,
   });
   const [remainingTimeMin, setRemainingTimeMin] = useState(null);
+  const [problemStartTime, setProblemStartTime] = useState(null); // 각 문제 시작 시간
+  const [problemDurations, setProblemDurations] = useState([]); // 각 문제 소요 시간(초 단위)
 
   const studySettings = location.state || {};
   const isQuizMode = studySettings.mode === 'quiz';
@@ -135,6 +137,13 @@ export default function ProblemPage() {
     fetchProblems();
   }, [studySettings.subject, studySettings.difficulty]);
 
+  // 문제가 변경될 때마다 현재 문제의 시작 시간 기록
+  useEffect(() => {
+    if (problems.length > 0 && currentProblemIndex < problems.length) {
+      setProblemStartTime(Date.now());
+    }
+  }, [currentProblemIndex, problems.length]);
+
   const currentProblem = problems[currentProblemIndex] || null;
 
   const handleOptionSelect = (index) => {
@@ -165,7 +174,13 @@ export default function ProblemPage() {
       { correctCount: 0, wrongCount: 0, totalScore: 0 }
     );
 
-    console.log('Calculate Results - problems:', problems.length, 'results:', results);
+    // 평균 시간 계산 (초 단위)
+    const averageTime = problemDurations.length > 0
+      ? Math.round(problemDurations.reduce((sum, duration) => sum + duration, 0) / problemDurations.length)
+      : 0;
+
+    console.log('Calculate Results - problems:', problems.length, 'results:', results, 'average time:', averageTime, 's');
+    console.log('Problem durations:', problemDurations);
 
     // 학습 완료 시 이어서 학습 목록에서 제거
     try {
@@ -209,6 +224,7 @@ export default function ProblemPage() {
         correctCount: results.correctCount,
         wrongCount: results.wrongCount,
         totalScore: results.totalScore,
+        averageTime, // 평균 풀이 시간 (초 단위)
         date: dateStr,
         timestamp: now.getTime()
       };
@@ -269,6 +285,12 @@ export default function ProblemPage() {
     if (selectedOption === null) {
       alert('보기를 선택하세요.');
       return;
+    }
+
+    // 현재 문제의 소요 시간 계산 및 저장
+    if (problemStartTime) {
+      const elapsedSeconds = Math.round((Date.now() - problemStartTime) / 1000);
+      setProblemDurations([...problemDurations, elapsedSeconds]);
     }
 
     const updated = [...problems];

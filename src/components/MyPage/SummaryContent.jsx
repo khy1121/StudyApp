@@ -16,6 +16,7 @@ const SummaryContent = () => {
     const [totalSolved, setTotalSolved] = useState(0);
     const [totalCorrect, setTotalCorrect] = useState(0);
     const [streak, setStreak] = useState(0);
+    const [averageTime, setAverageTime] = useState(0);
     const [recentActivities, setRecentActivities] = useState([]);
 
     useEffect(() => {
@@ -35,16 +36,27 @@ const SummaryContent = () => {
                 const raw = localStorage.getItem('studyHistory');
                 const history = raw ? JSON.parse(raw) : [];
 
-                // 총 푼 문제 수, 총 정답수
+                // 총 푼 문제 수, 총 정답수, 평균 시간
                 let solved = 0;
                 let correct = 0;
+                let totalDuration = 0;
+                let recordCount = 0;
+
                 history.forEach((rec) => {
                     solved += Number(rec.total || 0);
                     correct += Number(rec.correctCount || 0);
+                    if (typeof rec.averageTime === 'number') {
+                        totalDuration += rec.averageTime;
+                        recordCount++;
+                    }
                 });
 
                 setTotalSolved(solved);
                 setTotalCorrect(correct);
+
+                // 평균 시간 계산 (초 단위)
+                const avgTime = recordCount > 0 ? Math.round(totalDuration / recordCount) : 0;
+                setAverageTime(avgTime);
 
                 // 최근 활동 (최신 5개)
                 const recent = history.slice(0, 5).map((rec) => ({
@@ -77,7 +89,7 @@ const SummaryContent = () => {
 
     return (
         <div>
-            {/* 1. 인사 및 전체 정답률 탭 (welcomeTab) */}
+            {/*인사 및 전체 정답률 탭 */}
             <section className='welcomeTab'>
                 <div className='text'>
                     <p className="welcome">안녕하세요, {userName}님! 👏</p>
@@ -89,7 +101,7 @@ const SummaryContent = () => {
                 </div>
             </section>
 
-            {/* 2. 요약 카드 탭 (summaryTab) */}
+            {/*요약 카드 탭*/}
             <section className='summaryTab'>
                 <div className='card'>
                     <div className='icon-box'>
@@ -110,7 +122,7 @@ const SummaryContent = () => {
                         <div className="summary-icon" style={{ backgroundColor: '#9333ea' }} ><div>⏱️</div> </div>
                         <p>평균 시간</p>
                     </div>
-                    <h3>-</h3>
+                    <h3>{averageTime > 0 ? `${averageTime}초` : '-'}</h3>
                 </div>
                 <div className='card'>
                     <div className='icon-box'>
@@ -121,7 +133,7 @@ const SummaryContent = () => {
                 </div>
             </section>
 
-            {/* 3. AI 학습 조언 탭 (recommandTab) */}
+            {/*AI 직무 추천 탭*/}
             <section className='recommandTab'>
                 <h4 style={{ color: '#9333ea' }}>AI 직무 추천</h4>
                 <p>
@@ -130,7 +142,7 @@ const SummaryContent = () => {
                 <button onClick={() => navigate('/mypage/job-recommendation')}>추천 직무 확인하기</button>
             </section>
             
-            {/* 4. 최근 활동 목록 (recent-activity) - 이미지 하단 구현 */}
+            {/*최근 활동 목록*/}
             <section className='recent-activity'>
                 <h4 className="section-title" style={{ marginBottom: '20px' }}>최근 활동</h4>
                 <div className='activity-list'>

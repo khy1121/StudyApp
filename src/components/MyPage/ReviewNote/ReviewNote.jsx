@@ -32,21 +32,25 @@ const ReviewNote = () => {
     const [allWrongProblems, setAllWrongProblems] = useState([]);
 
     useEffect(() => {
-        // wrongProblems 서비스에서 ID 목록 가져오기
+        // wrongProblems에서 ID 목록 가져오기
         const loadWrongProblems = async () => {
             try {
-                const wrongIds = wrongProblemsService.getAll(); // { subject, id, difficulty, ts? }[]
+                const wrongIds = wrongProblemsService.getAll(); 
 
                 // 과목별로 문제 데이터 로드
                 const problemsBySubject = {};
                 for (const subject of ['os', 'ds', 'web']) {
                     try {
-                        const base = import.meta.env.BASE_URL || '/'
+                        const base = import.meta.env.BASE_URL || '/';
                         const url = `${base}data/problems/${subject}.json`;
+                        console.log('Fetching from URL:', url);
                         const res = await fetch(url);
                         if (res.ok) {
                             const json = await res.json();
                             problemsBySubject[subject] = json;
+                            console.log(`Successfully loaded ${subject}.json`);
+                        } else {
+                            console.warn(`Failed to fetch ${subject}.json: status ${res.status}`);
                         }
                     } catch (e) {
                         console.error(`failed to load ${subject}.json`, e);
