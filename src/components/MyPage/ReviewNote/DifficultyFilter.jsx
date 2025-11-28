@@ -1,4 +1,3 @@
-// Filters/DifficultyFilter.jsx
 import React from "react";
 
 const DIFFICULTY_MAP = {

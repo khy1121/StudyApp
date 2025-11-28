@@ -1,6 +1,3 @@
-// ProblemList/ChoiceItem.jsx
-import React from "react";
-
 const ChoiceItem = ({ idx, choice, isCorrect, isUserSelected, showMarkers }) => {
     let className = "";
 
