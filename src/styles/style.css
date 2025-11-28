@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  /* Use theme variable so dark/light apply globally via :root[data-theme] */
+  /* 테마 변수를 사용하여 다크 라이트 전역으로 적용되도록 함 */
   background-color: var(--bg-primary, #f8f8f8);
   width: 100%;
   min-height: 100vh;
