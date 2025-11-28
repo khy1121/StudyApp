@@ -1,4 +1,4 @@
-/* Home Page Styles - Theme Support */
+/* Home Page 스타일 */
 @import './theme.css';
 
 .home-container {
@@ -12,7 +12,7 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Header */
+/* 헤더 */
 .home-header {
   position: sticky;
   top: 0;
@@ -85,14 +85,14 @@
   border-color: var(--btn-hover-border);
 }
 
-/* Main Content */
+/* 메인컨텐트 */
 .home-main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 48px 24px;
 }
 
-/* Greeting */
+/* 인삿말 */
 .greeting {
   margin-bottom: 40px;
   text-align: center;
@@ -113,7 +113,7 @@
   line-height: 1.6;
 }
 
-/* Stats Grid - 3개 가로 배치 */
+/* 통계 그리드 - 3개 가로 배치 */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -184,7 +184,7 @@
   margin: 0;
 }
 
-/* Action Grid - 3개 가로 배치 */
+/* 액션 그리드 - 3개 가로 배치 */
 .action-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -268,81 +268,9 @@
   color: var(--text-primary);
 }
 
-/* Recent Activity */
+/* 최근 활동 */
 .recent-activity {
-  background: linear-gradient(180deg, var(--card-bg-from), var(--card-bg-to));
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  padding: 28px;
-}
-
-.section-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 24px 0;
-}
-
-.activity-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.activity-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 16px;
-  border-radius: 12px;
-  transition: background 0.2s;
-}
-
-.activity-item:hover {
-  background: var(--btn-hover-bg);
-}
-
-.activity-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-top: 4px;
-  flex-shrink: 0;
-}
-
-.activity-dot.green {
-  background: #10b981;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
-}
-
-.activity-dot.blue {
-  background: #3b82f6;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
-}
-
-.activity-dot.purple {
-  background: #a855f7;
-  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
-}
-
-.activity-content {
-  flex: 1;
-}
-
-.activity-title {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  margin: 0 0 4px 0;
-}
-
-.activity-time {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-/* Responsive */
+  background: linear-gradient(180deg, var(--card-bg-fr형 */
 @media (max-width: 1024px) {
   .stats-grid,
   .action-grid {
