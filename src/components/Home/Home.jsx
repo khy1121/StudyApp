@@ -49,11 +49,11 @@ export default function Home() {
           console.log('Name field:', result.user.name)
           setUserName(result.user.name)
         } else {
-          console.log('No user logged in')
+          console.log('로그인한 사용자 없음')
           setUserName('사용자')
         }
       } catch (e) {
-        console.error('Error fetching user:', e)
+        console.error('사용자 불러오기 실패패:', e)
         // 에러 시 기본값 유지
         setUserName('사용자')
       }
@@ -73,7 +73,7 @@ export default function Home() {
     
     // 페이지가 포커스될 때마다 데이터 새로고침
     const handleFocus = () => {
-      console.log('Page focused, refreshing data...')
+      console.log('페이지 포커스 중, 데이터 새로고침')
       loadData()
     }
     
@@ -99,12 +99,12 @@ export default function Home() {
         const raw = localStorage.getItem(studyHistoryKey);
         if (raw) {
           studyHistory = JSON.parse(raw);
-          console.log('📊 Study history loaded:', studyHistory);
+          console.log('공부 기록 불러오기기:', studyHistory);
         } else {
-          console.log('⚠️ No study history found in localStorage');
+          console.log('기록이 없습니다');
         }
       } catch (e) {
-        console.error('❌ Failed to parse study history:', e);
+        console.error('기록 불러오기 실패:', e);
       }
       
       // 오늘 날짜를 YYYY-MM-DD 형식으로
@@ -133,7 +133,7 @@ export default function Home() {
         
         if (recordDate === today) {
           todayProblems += record.total || 0;
-          console.log(`✅ Today's problem count increased to: ${todayProblems}`);
+          console.log(`오늘 푼 문제 증가 : ${todayProblems}`);
         }
         
         // 전체 정답률 계산
@@ -146,7 +146,7 @@ export default function Home() {
       // 연속 학습 일수 계산
       const studyStreak = calculateStudyStreak(studyHistory);
       
-      console.log('📈 Stats calculated:', { 
+      console.log('계산된 스탯:', { 
         todayProblems, 
         correctRate, 
         studyStreak,
@@ -160,7 +160,7 @@ export default function Home() {
         studyStreak
       });
     } catch (e) {
-      console.error('❌ Failed to calculate stats:', e);
+      console.error('계산된 정보 불러오기 실패:', e);
     }
   }
   
@@ -206,10 +206,10 @@ export default function Home() {
         const raw = localStorage.getItem(studyHistoryKey);
         if (raw) {
           studyHistory = JSON.parse(raw);
-          console.log('Recent activities loaded:', studyHistory);
+          console.log('최근 활동 불러오기:', studyHistory);
         }
       } catch (e) {
-        console.error('Failed to parse study history:', e);
+        console.error('최근 활동 불러오기 실패패:', e);
       }
       
       // 최근 5개 활동만 표시
@@ -234,10 +234,10 @@ export default function Home() {
           };
         });
       
-      console.log('Recent activities formatted:', recent);
+      console.log('최근 활동 포맷:', recent);
       setRecentActivities(recent);
     } catch (e) {
-      console.error('Failed to load recent activities:', e);
+      console.error('최근 활동 불러오기 실패패:', e);
     }
   }
   
