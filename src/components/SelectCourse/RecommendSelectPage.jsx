@@ -29,7 +29,7 @@ export default function RecommendSelectPage(props) {
     try {
       wrongProblems = getBySubjectAndDifficulty(subject, difficulty) || [];
     } catch (e) {
-      console.error('failed to get wrong problems from service', e);
+      console.error('틀린 문제 불러오기 실패', e);
       wrongProblems = [];
     }
     const wrongIds = wrongProblems.map(w => w.id);
@@ -63,7 +63,7 @@ export default function RecommendSelectPage(props) {
         return null;
       }
     } catch (e) {
-      console.error('failed to load or filter problems for recommend start', e);
+      console.error('오늘 추천 문제 불러오기 에러', e);
       return null;
     }
   };
