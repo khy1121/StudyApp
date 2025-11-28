@@ -1,4 +1,4 @@
 cd ../
 mkdir output
-cp -R ./https://github.com/khy1121/StudyApp/* ./output
-cp -R ./output ./https://github.com/khy1121/StudyApp/
+cp -R .https://github.com/Learning-support-service/common-directory/* ./output
+cp -R ./output ./https://github.com/Learning-support-service/common-directory
