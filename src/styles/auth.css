@@ -1,4 +1,4 @@
-/* Auth shared styles (Login/Sign-up) */
+/* 로그인 회원가입 */
 .auth-root {
   min-height: calc(100vh - 64px);
   display: grid;
