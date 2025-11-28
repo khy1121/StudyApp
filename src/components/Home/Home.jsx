@@ -44,16 +44,16 @@ export default function Home() {
     const fetchUser = async () => {
       try {
         const result = await localAuth.getUser()
-        console.log('User data from localAuth:', result)
+        console.log('로컬 auth에서 불러온 사용자:', result)
         if (result.success && result.user?.name) {
-          console.log('Name field:', result.user.name)
+          console.log('name 필드:', result.user.name)
           setUserName(result.user.name)
         } else {
           console.log('로그인한 사용자 없음')
           setUserName('사용자')
         }
       } catch (e) {
-        console.error('사용자 불러오기 실패패:', e)
+        console.error('사용자 불러오기 실패:', e)
         // 에러 시 기본값 유지
         setUserName('사용자')
       }
