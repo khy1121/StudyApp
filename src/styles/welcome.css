@@ -1,4 +1,4 @@
-/* Welcome page styles */
+/* Welcome page 스타일 */
 .welcome-root {
   min-height: 100vh;
   display: flex;
@@ -38,7 +38,7 @@
 }
 .nav-actions { display: flex; gap: 10px; }
 
-/* Hero */
+/* 히어로 */
 .welcome-hero {
   position: relative;
   display: grid;
@@ -81,7 +81,7 @@
   color: #9ca3af;
 }
 
-/* Buttons */
+/* 버튼 */
 .btn {
   border: 1px solid transparent;
   border-radius: 10px;
@@ -109,7 +109,7 @@
 }
 .btn.xl { padding: 14px 20px; font-size: 16px; }
 
-/* BG decorations */
+/* 백그라운드 */
 .bg-gradient {
   position: absolute;
   inset: 0;
