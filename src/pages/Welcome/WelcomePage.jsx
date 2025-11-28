@@ -25,7 +25,7 @@ export default function WelcomePage() {
         </div>
       </header>
 
-  {/* 히어로 섹션: 핵심 가치 제안 + CTA */}
+  {/* 히어로 섹션: 핵심 가치 제안 */}
       <main className="welcome-hero">
         <div className="welcome-container hero-inner">
           <div className="hero-badge">Beta</div>
