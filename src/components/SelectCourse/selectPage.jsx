@@ -303,7 +303,7 @@ export default function SelectPage({ onStart, ...props }) {
   );
 }
 
-/* ------- Sub Components ------- */
+/* 서브 컴포넌트  */
 
 function SubjectCard({ active, color, title, onClick }) {
   return (
@@ -312,7 +312,7 @@ function SubjectCard({ active, color, title, onClick }) {
       onClick={onClick}
       type="button"
     >
-      <div className={`subject-icon ${color}`}>{/* icon placeholder */}</div>
+      <div className={`subject-icon ${color}`}>{/*아이콘 추가 가능 */}</div>
       <div className="subject-title">{title}</div>
     </button>
   );
