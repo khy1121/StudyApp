@@ -1,4 +1,4 @@
-// Service to manage user's wrong/problem review list using localStorage
+//localStore를 사용하여 틀린 문제 목록 관리하는 서비스
 const STORAGE_KEY = 'wrongProblems';
 
 function safeParse(raw) {
@@ -26,8 +26,8 @@ function write(list) {
 }
 
 /**
- * Get all wrong entries.
- * Each entry shape: { subject: 'os'|'ds'|'web', id: number, difficulty: string, ts?: number }
+ * 모든 잘못된 항목 가져오기.
+ * 형태: { subject: 'os'|'ds'|'web', id: number, difficulty: string, ts?: number }
  */
 export function getAll() {
   return readRaw();
@@ -47,7 +47,7 @@ export function getBySubject(subject) {
 }
 
 /**
- * Get wrong entries by subject and difficulty
+ * 과목별 및 난이도별로 잘못된 항목 보기
  */
 export function getBySubjectAndDifficulty(subject, difficulty) {
   return readRaw().filter((e) => 
@@ -61,9 +61,9 @@ export function exists(subject, id) {
 }
 
 /**
- * Add a wrong entry. Will not add duplicates (subject+id unique).
- * entry: { subject, id, difficulty, ts? }
- * Returns false if entry is invalid or duplicate
+ *잘못된 항목을 추가. 중복 항목(subject+id )은 추가하지 않음.
+ * 항목: { subject, id, difficulty, ts? }
+ *항목이 잘못되었거나 중복된 경우 거짓을 반환
  */
 export function add(entry) {
   if (!entry || !entry.subject || typeof entry.id === 'undefined' || !entry.difficulty) return false;
