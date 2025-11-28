@@ -532,15 +532,14 @@
 
 /* Progress Bar */
 .progress-container {
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-  padding: 20px 24px;
-  backdrop-filter: saturate(180%) blur(8px);
+  padding: 16px 0 0 0;
+  width: 100%;
 }
 
 .progress-inner {
   max-width: 1280px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .progress-info {
