@@ -270,7 +270,7 @@
 
 /* 최근 활동 */
 .recent-activity {
-  background: linear-gradient(180deg, var(--card-bg-fr형 */
+  background: linear-gradient(180deg, var(--card-bg-from), var(--card-bg-to)}
 @media (max-width: 1024px) {
   .stats-grid,
   .action-grid {
