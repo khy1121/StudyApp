@@ -6,12 +6,12 @@ const achievementsSample = [
     { id: 1, title: '첫 걸음', desc: '첫 문제 풀이 완료', icon: '🥇' },
     { id: 2, title: '연속 학습자', desc: '5일 연속 학습', icon: '🔥' },
     { id: 3, title: '정확한 사수', desc: '정답률 90% 달성', icon: '🎯' },
-    { id: 4, title: '속도왕', desc: '평균 15초 이내 답변', icon: '⚡' },
+    { id: 4, title: '얼리버드', desc: '주로 오전에 학습', icon: '🕊️' },
     { id: 5, title: '완벽주의자', desc: '한 과목 100% 정답률', icon: '⭐' },
     { id: 6, title: '도전자', desc: '고급 문제 10개 풀이', icon: '🛡️' },
 ]
 
-export default function Achievment() {
+export default function Achievement() {
     const [achievements, setAchievements] = useState([])
     const [stats, setStats] = useState({
         totalAchieved: 0,
@@ -51,6 +51,22 @@ export default function Achievment() {
                     }
                 })
 
+                    // 시간대별 학습 통계 (오전/오후/저녁/밤) - LearningTrendChart와 동일한 로직 사용
+                    const timeStats = { 오전: 0, 오후: 0, 저녁: 0, 밤: 0 }
+                    history.forEach(rec => {
+                        if (rec.date) {
+                            const match = rec.date.match(/(\d{2}):(\d{2})/)
+                            if (match) {
+                                const hour = parseInt(match[1])
+                                let slot = '밤'
+                                if (hour >= 5 && hour < 12) slot = '오전'
+                                else if (hour >= 12 && hour < 17) slot = '오후'
+                                else if (hour >= 17 && hour < 21) slot = '저녁'
+                                timeStats[slot] += Number(rec.total || 0)
+                            }
+                        }
+                    })
+
                 // 5일 연속 학습 여부
                 const studyDates = new Set()
                 history.forEach(r => {
@@ -80,9 +96,9 @@ export default function Achievment() {
                         // 정확한 사수: 전체 정답률 90% 이상
                         achieved = totalSolved > 0 && (totalCorrect / totalSolved) >= 0.9
                     } else if (a.id === 4) {
-                        // 속도왕: 평균 15초 이내에 답변
-                        // studyHistory에 duration이 없으면 모든 문제가 15초 이내라고 가정
-                        achieved = totalSolved > 0 // 실제로는 duration을 계산해야 함
+                        // 얼리버드: 주로 오전에 학습 > 오전 타임(05~11시)의 학습량이 다른 시간대보다 큰 경우 달성
+                        const maxOther = Math.max(timeStats['오후'], timeStats['저녁'], timeStats['밤'])
+                        achieved = timeStats['오전'] > maxOther
                     } else if (a.id === 5) {
                         // 완벽주의자: 특정 과목의 정답률 100%
                         achieved = Object.values(subjectStats).some(s => 
@@ -128,9 +144,14 @@ export default function Achievment() {
                             progress = totalSolved > 0 ? Math.round((totalCorrect / totalSolved) * 100) : 0
                             target = 90
                             break
-                        case 4: // 속도왕: 평균 15초 이내 답변
-                            progress = totalSolved > 0 ? 1 : 0
-                            target = 1
+                        case 4: // 얼리버드 : 오전 학습량이 가장 많은 경우
+                            progress = timeStats['오전']
+                            target = Math.max(
+                                timeStats['오후'], 
+                                timeStats['저녁'],
+                                timeStats['밤'],
+                                1 // division by zero 방지
+                            )
                             break
                         case 5: // 완벽주의자: 한 과목 100% 정답률
                             // 최고 정답률인 과목의 정답률

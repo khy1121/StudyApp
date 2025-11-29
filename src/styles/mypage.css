@@ -617,7 +617,14 @@
 .achievement-stats { display: flex; gap: 16px; margin: 20px 40px; }
 .stat-box { flex: 1; border-radius: 12px; padding: 20px; color: #fff; display:flex; flex-direction:column; gap:8px; }
 .stat-box .stat-label { font-size: 14px; color: #ffffff; font-weight: 600; opacity: 0.95 }
-.stat-box .stat-value { font-size: 24px; font-weight: 700; color: #ffffff }
+.stat-box .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff; 
+    background-image: none;
+    background-clip: border-box;
+}
 .stat-box.orange { background: linear-gradient(90deg,#f59e0b,#f97316); }
 .stat-box.purple { background: linear-gradient(90deg,#7c3aed,#a78bfa); }
 .stat-box.green { background: linear-gradient(90deg,#10b981,#34d399); }
