@@ -271,7 +271,90 @@
 /* 최근 활동 */
 .recent-activity {
   background: linear-gradient(180deg, var(--card-bg-from), var(--card-bg-to));
- }
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::before {
+  content: '📋';
+  font-size: 20px;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+
+.activity-item:hover {
+  transform: translateX(4px);
+  background: var(--card-hover-bg-from);
+  border-color: var(--btn-hover-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.activity-dot {
+  display: none;
+}
+
+
+
+.activity-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-time {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.activity-time::before {
+  content: '🕐';
+  font-size: 12px;
+}
+
+/* 활동 없을 때 */
+.activity-list:empty::after {
+  content: '아직 학습 활동이 없습니다. 지금 시작해보세요!';
+  display: block;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
 @media (max-width: 1024px) {
   .stats-grid,
   .action-grid {
