@@ -33,6 +33,7 @@
 }
 .brand {
   font-weight: 800;
+  font-size: 25px;
   color: #e5e7eb;
   cursor: pointer;
 }

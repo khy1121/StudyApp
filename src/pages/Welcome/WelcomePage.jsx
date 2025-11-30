@@ -17,7 +17,7 @@ export default function WelcomePage() {
   {/* 상단 네비게이션 바 */}
       <header className="welcome-nav">
         <div className="welcome-container nav-inner">
-          <div className="brand" onClick={() => navigate('/')}>� StudyApp</div>
+          <div className="brand" onClick={() => navigate('/')}>📘 CSTime</div>
           <div className="nav-actions">
             <button className="btn ghost" onClick={goLogin}>로그인</button>
             <button className="btn primary" onClick={goSignUp}>회원가입</button>
