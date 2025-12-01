@@ -2,15 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@font-face {
-  font-family: "TheDoodle";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310-2@1.0/TheDoodle.woff2")
-    format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
   margin: 0;
   /* 테마 변수를 사용하여 다크 라이트 전역으로 적용되도록 함 */
@@ -19,5 +10,5 @@ body {
   min-height: 100vh;
   color: var(--text-secondary, #374151);
 
-  font-family: "TheDoodle", sans-serif;
+  font-family: sans-serif;
 }
