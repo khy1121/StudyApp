@@ -2,6 +2,10 @@
 
 학습 지원 서비스 프로젝트
 
+
+# 도메인 
+[CSTIME](https://study-app-sigma-lemon.vercel.app/)
+
 ## 📋 목차
 
 - [프로젝트 소개](#프로젝트-소개)
