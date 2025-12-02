@@ -50,12 +50,12 @@ export default function ProblemPage() {
         return;
       }
 
-      // If problems are already provided via navigation state (e.g. Recommend flow or Continue Study), use them directly
+
       if (Array.isArray(studySettings.problems) && studySettings.problems.length > 0) {
         try {
           const formattedProblems = studySettings.problems.map(problem => ({
             ...problem,
-            // normalize fields: ensure both answerIndex/answer and choices/options exist
+
             answerIndex: typeof problem.answerIndex !== 'undefined' ? problem.answerIndex : (problem.answer ?? null),
             answer: typeof problem.answer !== 'undefined' ? problem.answer : (problem.answerIndex ?? null),
             choices: problem.choices ?? problem.options ?? [],
@@ -96,12 +96,12 @@ export default function ProblemPage() {
           return;
         } catch (e) {
           console.error('failed to use provided problems:', e);
-          // fallback to normal loading
+
         }
       }
 
       try {
-        const subjectFile = studySettings.subject; // ex: 'os'
+        const subjectFile = studySettings.subject; 
         const base = import.meta.env.BASE_URL || '/';
         const url = `${base}data/problems/${subjectFile}.json`;
         const res = await fetch(url);
@@ -262,7 +262,6 @@ export default function ProblemPage() {
         problems,
         subject: studySettings.subject,
         difficulty: studySettings.difficulty,
-        // pass through mode and any time settings so Results page can retry with same mode
         mode: studySettings.mode,
         studyTimeMin: studySettings.studyTimeMin,
         timeLimitMin: studySettings.timeLimitMin
