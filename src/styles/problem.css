@@ -1,4 +1,3 @@
-/* Problem Page Styles - Theme Support */
 @import './theme.css';
 
 .continue-study-page {
@@ -469,7 +468,7 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Header */
+/* 헤더 */
 .problem-header {
   position: sticky;
   top: 0;
@@ -530,7 +529,7 @@
   transform: translateY(-1px);
 }
 
-/* Progress Bar */
+/* 진행 바 */
 .progress-container {
   padding: 16px 0 0 0;
   width: 100%;
@@ -585,7 +584,7 @@
   100% { transform: translateX(100%); }
 }
 
-/* Main Content */
+/* 메인 컨텐트 */
 .problem-main {
   flex: 1;
   max-width: 800px;
@@ -594,7 +593,7 @@
   width: 100%;
 }
 
-/* Question */
+/* 질문*/
 .question-container {
   background: linear-gradient(180deg, var(--card-bg-from), var(--card-bg-to));
   border: 1px solid var(--card-border);
@@ -618,7 +617,7 @@
   margin: 0;
 }
 
-/* Options */
+/* 선택지 */
 .options-container {
   display: flex;
   flex-direction: column;
@@ -718,7 +717,7 @@
   font-weight: 500;
 }
 
-/* Results Container */
+/* 결과 컨테이너 */
 .results-container {
   flex: 1;
   display: flex;
@@ -793,7 +792,7 @@
   margin-left: 2px;
 }
 
-/* Score Details */
+/* 점수 세부사항 */
 .score-details {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -944,7 +943,7 @@
   line-height: 1.6;
 }
 
-/* Action Buttons */
+/* 액션 버튼 */
 .action-row {
   display: flex;
   justify-content: center;
@@ -1050,7 +1049,7 @@
   box-shadow: 0 8px 24px rgba(37, 99, 235, .25);
 }
 
-/* Footer for results actions (sticky bottom) */
+/* 결과 액션용 푸터 (하단 고정) */
 .results-footer {
   position: sticky;
   bottom: 0;
@@ -1058,7 +1057,7 @@
   display: flex;
   justify-content: center;
   background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.02));
-  padding: 16px 0 28px; /* extra bottom padding for spacing */
+  padding: 16px 0 28px; 
 }
 
 .results-footer-inner {
@@ -1089,7 +1088,7 @@
   justify-content: center;
 }
 
-/* Answer Feedback */
+
 .answer-feedback {
   background: var(--bg-secondary);
   border: 2px solid var(--card-border);
@@ -1261,7 +1260,7 @@
   font-weight: 500;
 }
 
-/* Timer */
+
 .timer {
   font-weight: 700;
   color: var(--text-primary);
@@ -1269,7 +1268,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Responsive */
+
 @media (max-width: 640px) {
   .problem-main {
     padding: 24px 16px;

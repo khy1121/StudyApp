@@ -25,7 +25,7 @@ export default function ResultsPage() {
       mode: results.mode || 'quiz'
     };
 
-    // include time limits if present (exam mode)
+
     if (results.timeLimitMin) payload.timeLimitMin = results.timeLimitMin;
     if (results.studyTimeMin) payload.studyTimeMin = results.studyTimeMin;
 
