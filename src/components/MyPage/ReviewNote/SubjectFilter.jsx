@@ -1,4 +1,3 @@
-// Filters/SubjectFilter.jsx
 import React from "react";
 
 const SUBJECT_MAP = {

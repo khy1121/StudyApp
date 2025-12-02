@@ -179,9 +179,6 @@ export default function ProblemPage() {
       ? Math.round(problemDurations.reduce((sum, duration) => sum + duration, 0) / problemDurations.length)
       : 0;
 
-    console.log('Calculate Results - problems:', problems.length, 'results:', results, 'average time:', averageTime, 's');
-    console.log('Problem durations:', problemDurations);
-
     // 학습 완료 시 이어서 학습 목록에서 제거
     try {
       const STORAGE_KEY = 'continueStudy';

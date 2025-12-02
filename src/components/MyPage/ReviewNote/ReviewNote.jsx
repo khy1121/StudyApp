@@ -1,4 +1,3 @@
-// ReviewNote.jsx
 import React, { useState, useMemo, useEffect } from "react";
 import * as wrongProblemsService from "../../../services/wrongProblems";
 import SubjectFilter from "./SubjectFilter";
@@ -41,16 +40,12 @@ const ReviewNote = () => {
                 const problemsBySubject = {};
                 for (const subject of ['os', 'ds', 'web']) {
                     try {
-                        const base = import.meta.env.BASE_URL || '/';
+                        const base = import.meta.env.BASE_URL || '/'
                         const url = `${base}data/problems/${subject}.json`;
-                        console.log('Fetching from URL:', url);
                         const res = await fetch(url);
                         if (res.ok) {
                             const json = await res.json();
                             problemsBySubject[subject] = json;
-                            console.log(`Successfully loaded ${subject}.json`);
-                        } else {
-                            console.warn(`Failed to fetch ${subject}.json: status ${res.status}`);
                         }
                     } catch (e) {
                         console.error(`failed to load ${subject}.json`, e);

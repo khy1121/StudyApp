@@ -1,4 +1,3 @@
-// ProblemList/ProblemItem.jsx
 import React from "react";
 import ChoiceItem from "./ChoiceItem";
 

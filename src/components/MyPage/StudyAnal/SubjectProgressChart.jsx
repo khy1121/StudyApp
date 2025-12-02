@@ -64,7 +64,7 @@ const SubjectProgressChart = () => {
 
                 return (
                     <div key={index} className="subject-item">
-                        {/* 1. 과목명 + 퍼센트/점수 헤더 */}
+                        {/*과목명 + 퍼센트/점수 헤더 */}
                         <div className="subject-header">
                             <h4 className="subject-name">{subject.name}</h4>
                             <div className="score-stats">
@@ -73,7 +73,7 @@ const SubjectProgressChart = () => {
                             </div>
                         </div>
 
-                        {/* 2. 막대 그래프 및 등급 */}
+                        {/*막대 그래프 및 등급*/}
                         <div className="subject-chart-area">
                             <div className="chart-container">
                                 <div
@@ -84,7 +84,7 @@ const SubjectProgressChart = () => {
                                     }}
                                 ></div>
                             </div>
-                            {/* 등급 표시 (막대 그래프의 오른쪽에 위치) */}
+                            {/*등급 표시 (막대 그래프의 오른쪽에 위치) */}
                             <span className={`rating-text-container ${textColorClass}`}>
                                 {rating}
                             </span>

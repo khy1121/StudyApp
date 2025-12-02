@@ -22,7 +22,7 @@ const LearningTrendChart = () => {
             const raw = localStorage.getItem('studyHistory');
             const history = raw ? JSON.parse(raw) : [];
 
-            // 지난 7일간의 날짜 계산
+            //지난 7일간의 날짜 계산
             const today = new Date();
             const dayOrder = ['일', '월', '화', '수', '목', '금', '토'];
             const last7Days = {};
@@ -48,7 +48,7 @@ const LearningTrendChart = () => {
             const weekly = Object.values(last7Days).map(d => ({ ...d, color: '#6366F1' }));
             setWeeklyLearningData(weekly);
 
-            // 시간대별 학습 (date에서 시간 추출해 오전/오후/저녁/밤 분류)
+            //시간대별 학습 (date에서 시간 추출해 오전/오후/저녁/밤 분류)
             const timeStats = { 오전: 0, 오후: 0, 저녁: 0, 밤: 0 };
             history.forEach(rec => {
                 if (rec.date) {
@@ -84,7 +84,7 @@ const LearningTrendChart = () => {
 
             <div className="trend-content">
 
-                {/* 주간 학습량 (왼쪽) */}
+                {/*주간 학습량 (왼쪽) */}
                 <div className="weekly-learning">
                     <h4 className="trend-subtitle">주간 학습량</h4>
                     <div className="progress-list">
@@ -106,7 +106,7 @@ const LearningTrendChart = () => {
                     </div>
                 </div>
 
-                {/* 시간대별 학습 활동 (오른쪽) */}
+                {/*시간대별 학습 활동 (오른쪽) */}
                 <div className="time-activity">
                     <h4 className="trend-subtitle">시간대별 학습 활동</h4>
                     <div className="progress-list">
