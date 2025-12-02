@@ -26,7 +26,7 @@ const SummaryContent = () => {
                 const res = await localAuth.getUser();
                 if (res.success && res.user?.name) setUserName(res.user.name);
             } catch (e) {
-                console.error('failed to get user', e);
+                console.error('사용자 정보 불러오기 실패:', e);
             }
         };
 
@@ -79,7 +79,7 @@ const SummaryContent = () => {
                 }
                 setStreak(s);
             } catch (e) {
-                console.error('failed to load stats from studyHistory', e);
+                console.error('학습 기록에서 통계 로드 실패:', e);
             }
         };
 

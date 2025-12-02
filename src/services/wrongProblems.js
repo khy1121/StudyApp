@@ -20,7 +20,7 @@ function write(list) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
     return true;
   } catch (e) {
-    console.error('failed to write wrongProblems', e);
+    console.error('오답 문제 저장 실패:', e);
     return false;
   }
 }

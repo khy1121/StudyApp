@@ -148,7 +148,7 @@ const Settings = () => {
         localStorage.setItem(USERS_KEY, JSON.stringify(users));
       }
     } catch (e) {
-      console.error("profile save error", e);
+      console.error("프로필 저장 오류:", e);
     }
 
     // 다른 컴포넌트에 변경 알림

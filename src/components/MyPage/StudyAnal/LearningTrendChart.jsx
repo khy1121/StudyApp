@@ -73,7 +73,7 @@ const LearningTrendChart = () => {
             ];
             setTimeActivityData(timeData);
         } catch (e) {
-            console.error('failed to load learning trend data', e);
+            console.error('학습 트렌드 데이터 로드 실패:', e);
         }
     }, []);
 

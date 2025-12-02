@@ -110,7 +110,7 @@ export default function SelectPage({ onStart, ...props }) {
           payload = { ...payload, ...result };
         }
       } catch (e) {
-        console.error('onStart 핸들러 에러러:', e);
+        console.error('onStart 핸들러 오류:', e);
       }
     }
 

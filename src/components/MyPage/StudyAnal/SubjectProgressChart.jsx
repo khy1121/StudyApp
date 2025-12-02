@@ -32,7 +32,7 @@ const SubjectProgressChart = () => {
 
             setSubjectData(data);
         } catch (e) {
-            console.error('failed to load subject progress data', e);
+            console.error('과목별 진행 데이터 로드 실패:', e);
         }
     }, []);
 

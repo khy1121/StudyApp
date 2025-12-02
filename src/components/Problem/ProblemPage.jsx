@@ -95,7 +95,7 @@ export default function ProblemPage() {
           setLoading(false);
           return;
         } catch (e) {
-          console.error('failed to use provided problems:', e);
+          console.error('제공된 문제를 사용하지 못했습니다:', e);
 
         }
       }
@@ -226,16 +226,16 @@ export default function ProblemPage() {
         timestamp: now.getTime()
       };
       
-      console.log('Saving study history:', historyEntry);
+      console.log('학습 기록 저장 중:', historyEntry);
       
       let historyRaw = localStorage.getItem(HISTORY_KEY);
       let historyArr = [];
       if (historyRaw) {
         try { 
           historyArr = JSON.parse(historyRaw);
-          console.log('Existing history records:', historyArr.length);
+          console.log('기존 기록 개수:', historyArr.length);
         } catch (e) { 
-          console.error('Failed to parse existing history:', e);
+          console.error('기존 기록 파싱 실패:', e);
           historyArr = []; 
         }
       }
@@ -249,10 +249,10 @@ export default function ProblemPage() {
       }
       
       localStorage.setItem(HISTORY_KEY, JSON.stringify(historyArr));
-      console.log('✅ Study history saved successfully. Total records:', historyArr.length);
-      console.log('Saved entry date:', historyEntry.date);
+      console.log('✅ 학습 기록이 성공적으로 저장되었습니다. 총 기록:', historyArr.length);
+      console.log('저장된 항목 날짜:', historyEntry.date);
     } catch (e) {
-      console.error('❌ Failed to save study history:', e);
+      console.error('❌ 학습 기록 저장 실패:', e);
     }
 
     setResults(results);
@@ -316,11 +316,11 @@ export default function ProblemPage() {
             removeWrongProblem(studySettings.subject, currentProblem.id);
           }
         } catch (e) {
-          console.error('failed to remove wrong problem on correct answer:', e);
+          console.error('정답 시 오답 문제 제거 실패:', e);
         }
       }
     } catch (e) {
-      console.error('failed to record wrong problem:', e);
+      console.error('오답 문제 기록 실패:', e);
     }
 
     if (isQuizMode) setShowAnswer(false);
@@ -452,7 +452,7 @@ export default function ProblemPage() {
                     arr.unshift(entry);
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
                   } catch (e) {
-                    console.error('failed to save continue study data:', e);
+                    console.error('이어서 학습 데이터 저장 실패:', e);
                   }
                   navigate('/home');
                 }
